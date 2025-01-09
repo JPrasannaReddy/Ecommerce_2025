@@ -9,7 +9,6 @@ const Popup = ({handleYesCart, handleNoCart}) =>{
                 <p>Do you want to add to the cart </p>
                 <button onClick={handleYesCart}>Yes </button>
                 <button onClick={handleNoCart}>No </button>
-
         </div>
     )
 }

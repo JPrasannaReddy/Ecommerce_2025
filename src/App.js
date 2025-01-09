@@ -11,10 +11,16 @@ const App = () => {
   const [cartCount, setCartCount] = useState(0);
 const [popupVisible, setPopupVisible] = useState(false);
 const [pendingProduct, setPendingProduct] = useState(null);
+
 const [cartItems, setCartItems] = useState([]);
 const [disableCart, setDisableCart] = useState(false);
+const [disabledProducts, setDisabledProducts] = useState([]);
 
   const incrementCart = (product) => {
+    console.log(product,"product")
+    if (!disabledProducts.includes(product.id)) {
+      setDisabledProducts([...disabledProducts, product.id]);
+    }
     setPendingProduct(product);
     setPopupVisible(true)
   };
@@ -23,7 +29,8 @@ const [disableCart, setDisableCart] = useState(false);
     if(pendingProduct) {
       setCartCount(cartCount+1);
     }
-    setPendingProduct(null);
+
+    // setPendingProduct(null);
     setPopupVisible(false);
   }
 
@@ -42,6 +49,8 @@ const [disableCart, setDisableCart] = useState(false);
               handleNoCart={handleNoCart} handleYesCart={handleYesCart}
               popupVisible={popupVisible} 
                pendingProduct={pendingProduct}
+               disableCart={disableCart}
+               disabledProducts={disabledProducts}
               />
               }
            />
