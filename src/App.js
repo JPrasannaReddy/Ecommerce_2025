@@ -15,17 +15,22 @@ const [pendingProduct, setPendingProduct] = useState(null);
 const [cartItems, setCartItems] = useState([]);
 const [disableCart, setDisableCart] = useState(false);
 const [disabledProducts, setDisabledProducts] = useState([]);
+const [cartplus,setCartplus]=useState()
 
   const incrementCart = (product) => {
+    setCartplus(product)
     console.log(product,"product")
-    if (!disabledProducts.includes(product.id)) {
-      setDisabledProducts([...disabledProducts, product.id]);
-    }
+   
     setPendingProduct(product);
     setPopupVisible(true)
   };
 
   const handleYesCart = ()=>{
+    console.log("cartplus",cartplus);
+    
+    if (!disabledProducts.includes(cartplus.id)) {
+      setDisabledProducts([...disabledProducts, cartplus.id]);
+    }
     if(pendingProduct) {
       setCartCount(cartCount+1);
     }
