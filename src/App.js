@@ -42,6 +42,7 @@ const [cartplus,setCartplus]=useState()
   const handleNoCart = () => {
     setPendingProduct(null);
     setPopupVisible(false);
+    console.log("kanna")
   }
 
   return (
